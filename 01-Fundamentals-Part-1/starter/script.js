@@ -169,6 +169,7 @@ let l = '10'-'4'-'3'-2+'5';
 console.log(l);
 */
 
+/*
 // Truthy and Falsy
 // 5 falsy values: 0, '', undefined, null, NaN
 console.log(Boolean(0));
@@ -193,3 +194,26 @@ if (height) {
 } else {
   console.log("Height is undefined");
 }
+*/
+
+// equality operators: == vs ===
+
+const age = '18';
+if(age === 18) console.log('You just became an adult :D (strict)');
+if(age == 18) console.log('You just became an adult :D (loose)');
+
+const favourite = Number(prompt("What's your favourite number?"));
+console.log(favourite);
+console.log(typeof favourite);
+
+if(favourite === 23){ //'23' string if not set prompt as a number
+    console.log('Cool! 23 is an amazing number!');
+}else if(favourite === 7){
+    console.log('7 is also a cool number');
+}else if(favourite === 9){
+    console.log('9 is also a cool number');
+}else{
+    console.log('Number is not 23 or 7');
+}
+
+if(favourite !== 23) console.log("why not 23!");
