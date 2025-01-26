@@ -196,6 +196,7 @@ if (height) {
 }
 */
 
+/*
 // equality operators: == vs ===
 
 const age = '18';
@@ -217,3 +218,63 @@ if(favourite === 23){ //'23' string if not set prompt as a number
 }
 
 if(favourite !== 23) console.log("why not 23!");
+*/
+
+/*
+// logical operators && || !
+
+const hasDriversLicense = true; // A
+const hasGoodVision = true; // B
+// if A or B have one false value then all the logical operators will be false &&
+console.log(hasDriversLicense && hasGoodVision);
+// if A or B have one true value then all the logical operators will be true ||
+console.log(hasDriversLicense || hasGoodVision);
+// This exclamation operator is not if the value is boolean true then it's going to be false because it's not !
+console.log(!hasDriversLicense);
+
+// if (hasDriversLicense && hasGoodVision) {
+//   console.log("Sarah is able to drive!");
+// } else {
+//   console.log("Someone else should drive...");
+// }
+
+const isTired = false; // C
+
+console.log(hasDriversLicense && hasGoodVision && isTired);
+
+if (hasDriversLicense && hasGoodVision && !isTired) {
+  console.log("Sarah is able to drive!");
+} else {
+  console.log("Someone else should drive...");
+}
+*/
+
+/*
+const scoreDolphins = (96 + 108 + 89) / 3;
+const scoreKoalas = (88 + 91 + 110) / 3;
+
+if(scoreDolphins > scoreKoalas){
+    console.log("Dolphins win the trophy 🏆");
+}else if(scoreKoalas > scoreDolphins){
+    console.log("Koalas win the trophy 🏆");
+}else if(scoreDolphins === scoreKoalas) {
+    console.log("Both win the trophy 🏆");
+}
+
+// challange two
+const scoreDolphins = (97 + 112 + 101) / 3;
+const scoreKoalas = (109 + 95 + 106) / 3;
+console.log(scoreDolphins, scoreKoalas);
+
+
+if(scoreDolphins > scoreKoalas && scoreDolphins >= 100){
+    console.log("Dolphins win the trophy 🏆");
+}else if(scoreKoalas > scoreDolphins && scoreKoalas >= 100){
+    console.log("Koalas win the trophy 🏆");
+}else if(scoreDolphins === scoreKoalas && scoreDolphins >= 100 && scoreKoalas >= 100) {
+    console.log("Both win the trophy 🏆");
+}else {
+    console.log("No one wins the trophy 😭");
+}
+
+*/
