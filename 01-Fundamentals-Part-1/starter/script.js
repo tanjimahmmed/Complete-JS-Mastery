@@ -178,7 +178,7 @@ console.log(Boolean("Tanjim"));
 console.log(Boolean({}));
 console.log(Boolean(""));
 
-const money = 500; //0 is falsy
+const money = 0; //0 is falsy
 
 if (money) {
   console.log("Don't spent it all:)");
@@ -276,5 +276,42 @@ if(scoreDolphins > scoreKoalas && scoreDolphins >= 100){
 }else {
     console.log("No one wins the trophy 😭");
 }
-
 */
+
+const day = "saturday";
+
+/*
+switch (day) {
+  case "monday":
+    console.log("Monday is work day");
+    break;
+  case "tuesday":
+    console.log("Prepare for code task");
+    break;
+  case "wednesday":
+  case "thursday":
+    console.log("Same working day");
+  case "friday":
+    console.log("Giving feedback");
+  case "saturday":
+  case "sunday":
+    console.log("relaxing day");
+    break;
+  default:
+    console.log("Not any matches command");
+}
+*/
+
+if(day === "monday"){
+    console.log("Monday is work day");
+}else if(day === "tuesday"){
+    console.log("Prepare for code task");
+}else if(day === "wednesday" || day === "thursday"){
+    console.log("Same working day");
+}else if(day === "friday"){
+    console.log("Giving feedback");
+}else if(day === "saturday" || day === "sunday") {
+    console.log("relaxing day");
+}else {
+    console.log("Not any matches command");
+}
