@@ -9,6 +9,7 @@ if (passTest) hasDriversLicense = true;
 if (hasDriversLicense) console.log("I can drive :D");
 */
 
+/*
 // a function is reusable code which we can use again and again
 function logger() {
   console.log("Tanjim");
@@ -33,4 +34,23 @@ console.log(fruitProcessor(5, 0));
 
 const appleOrangeJuice = fruitProcessor(2, 3);
 console.log(appleOrangeJuice);
+*/
 
+
+// function declaration can work even they call it on the top
+// func declaration
+function calcAge1(birthYear) {
+    return 2037 - birthYear;
+}
+
+const age1 = calcAge1(1998);
+
+// with func expression it won't work
+// func expression
+
+const calcAge2 = function (birthYear){
+    return 2037 - birthYear;
+}
+const age2 = calcAge2(1998);
+
+console.log(age1, age2);
