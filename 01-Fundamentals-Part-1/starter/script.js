@@ -300,7 +300,7 @@ switch (day) {
   default:
     console.log("Not any matches command");
 }
-*/
+
 
 if(day === "monday"){
     console.log("Monday is work day");
@@ -315,3 +315,18 @@ if(day === "monday"){
 }else {
     console.log("Not any matches command");
 }
+*/
+
+// condition ternary operator
+const age = 26;
+const drink = age >= 18 ? "Wine 🍷" : "Water 💧";
+console.log(drink);
+
+console.log(`have some ${age >= 18 ? "Wine 🍷" : "Water 💧"}`);
+
+// Challange
+const bill = 50;
+const tip = bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+console.log(
+  `The bill was ${bill}, the tip was ${tip}, and the total value ${bill + tip}`
+);
