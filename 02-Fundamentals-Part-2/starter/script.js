@@ -73,6 +73,7 @@ console.log(yearsUntilRetirement(1998, 'Tanjim'));
 console.log(yearsUntilRetirement(1992, 'Jahid'));
 */
 
+/*
 // function call other function
 function cutFruitPices(fruit) {
   return fruit * 3;
@@ -87,3 +88,80 @@ function fruitProcessor(apples, oranges) {
 }
 
 console.log(fruitProcessor(2, 3));
+
+// Sandwich maker with same function
+function prepareIngradient(ingredient) {
+  return `${ingredient} slices`;
+}
+
+function makeSandWich(bread, cheese, ham) {
+  const breadSlices = prepareIngradient(bread);
+  const cheeseSlices = prepareIngradient(cheese);
+  const hamSlices = prepareIngradient(ham);
+
+  const sandwich = `Sandwich with ${breadSlices} Bread, ${cheeseSlices} Cheese and ${hamSlices} Ham`;
+  return sandwich;
+}
+
+console.log(makeSandWich(2, 1, 2));
+
+// pizza slicer
+function pizzaSlicer(pizza){
+    return pizza * 8;
+};
+
+function servePizza(pizzas){
+    const totalSlices = pizzaSlicer(pizzas);
+    return `You have total ${totalSlices} slices of pizza`;
+}
+console.log(servePizza(2));
+
+// coffe maker
+function gridBeans(amount) {
+    return `${amount} scoops of coffee grounds`;
+}
+
+function brewCoffee(beans, water){
+    const groundBeans = gridBeans(beans);
+    return `Coffe brewed with ${groundBeans} and ${water} cups of water.`
+}
+console.log(brewCoffee(2,4));
+
+// smoothie blender
+function prepareFruit(fruit, quantity){
+    return `${quantity} pices of ${fruit}`;
+}
+
+function makeSmoothie(banana, strawberry) {
+    const bananaPieces = prepareFruit("banana", banana);
+    const strawberryPices = prepareFruit('strawBerry', strawberry);
+
+    return `Smoothie made with ${bananaPieces} and ${strawberryPices}`
+}
+
+console.log(makeSmoothie(3, 5));
+
+// Burger builder
+function cookPatty(type){
+  return `${type} patty cooked`;
+}
+
+function makeBurger(bun, pattyType, toppings){
+  const cookedPatty = cookPatty(pattyType);
+  return `Burger with ${bun}, ${cookedPatty}, and ${toppings.join(", ")} toppings.`;
+}
+console.log(makeBurger("sesame", "beef", ["lettuce", "tomato", "cheese"]));
+
+
+// carpentry shop
+function cutWood(pices){
+  return `${pices * 2} wooden planks`;
+}
+
+function buildTable(woodPices){
+  const planks = cutWood(woodPices);
+  return `Table built with ${planks}`;
+}
+
+console.log(buildTable(5));
+*/
