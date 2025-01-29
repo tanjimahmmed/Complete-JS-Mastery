@@ -370,7 +370,7 @@ const displayGrade = function (name, marks, grade) {
 let marksJohn = 92;
 let gradeJohn = calcGrade(marksJohn);
 displayGrade("John", marksJohn, gradeJohn);
-*/
+
 
 const carMilage = (milage) => {
   if (milage < 10000) return "Excellent";
@@ -386,3 +386,4 @@ const displayCarMilage = function (milage, condition) {
 let milageToyota = 1000000;
 let conditionToyota = carMilage(milageToyota);
 displayCarMilage(milageToyota, conditionToyota);
+*/
