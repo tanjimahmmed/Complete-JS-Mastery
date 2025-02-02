@@ -603,6 +603,7 @@ for (let rep = 1; rep <= 10; rep++) {
 }
 */
 
+/*
 ///////////////////// loopings array and continue and break
 const tanjims = [
   "Tanjim",
@@ -644,3 +645,28 @@ for (let i = 0; i < tanjims.length; i++){
   if(typeof tanjims[i] === "number") break;
   console.log(tanjims[i], typeof tanjims[i]);
 }
+*/
+
+/*
+///////////////////// looping backward
+const tanjims = [
+  "Tanjim",
+  "Milton",
+  2047 - 1998,
+  "programmer",
+  ["Michael", "Peter", "Steven"],
+  true
+];
+
+for(let i = tanjims.length - 1; i >= 0; i--){
+  console.log(tanjims[i])
+}
+
+for(let exercise = 1; exercise <= 3; exercise++){
+  console.log(`----- Starting expercise ${exercise}`)
+
+  for(let rep = 1; rep <= 5; rep++){
+    console.log(`Exercise ${exercise}: Lifting weight repetition ${rep}`)
+  }
+}
+  */
