@@ -490,6 +490,7 @@ const tanjim = {
 console.log(tanjim);
 */
 
+/*
 const tanjim = {
   firstName: "Tanjim",
   lastName: "Miller",
@@ -518,3 +519,78 @@ console.log(tanjim);
 
 // challenge
 console.log(`${tanjim.firstName} has ${tanjim.friends.length} friends, and his best friend is called ${tanjim.friends[0]}`);
+*/
+
+
+///////////////////// Object methods
+/*
+const tanjims = {
+  firstName: "Tanjim",
+  lastName: "Milton",
+  birthYear: 1998,
+  job: "programmer",
+  friends: ["Michael", "Peter", "Steven"],
+  hasDriversLicense: true,
+
+  // calcAge: function (birthYear) {
+  //   return 2047 - birthYear;
+  // },
+
+  // calcAge: function () {
+  //   // console.log(this);
+  //   return 2047 - this.birthYear;
+  // },
+
+  calcAge: function () {
+    this.age = 2047 - this.birthYear;
+    return this.age;
+  },
+
+  getSummary: function () {
+    return `${this.firstName} is a ${this.calcAge()} years old ${this.job}, and he has ${this.hasDriversLicense ? "a" : "no"} driver's license`
+  }
+};
+console.log(tanjims.calcAge());
+console.log(tanjims.age);
+console.log(tanjims.age);
+console.log(tanjims.age);
+
+
+// console.log(tanjims["calcAge"](1998));
+
+// challenge
+console.log(tanjims.getSummary());
+*/
+
+// challenge
+const mark = {
+  fullName: "Mark Miller",
+  mass: 78,
+  height: 1.69,
+  calcBMI: function(){
+    this.bmi = this.mass / (this.height * this.height);
+    return this.bmi;
+  }
+}
+const john = {
+  fullName: "John Smith",
+  mass: 92,
+  height: 1.95,
+  calcBMI: function(){
+    this.bmi = this.mass / this.height ** 2;
+    return this.bmi;
+  }
+}
+
+mark.calcBMI();
+john.calcBMI();
+
+console.log(mark.bmi, john.bmi);
+
+// console.log(`${john.fullName} BMI ${john.calcBMI} is higher than ${mark.fullName} ${mark.calcBMI}`)
+
+if(mark.bmi > john.bmi) {
+  console.log(`${mark.fullName}'s is BMI (${mark.bmi}) is higer than ${john.fullName}'s BMI (${john.bmi})`)
+}else if(john.bmi > mark.bmi) {
+  console.log(`${john.fullName}'s is BMI (${john.bmi}) is higer than ${mark.fullName}'s BMI (${mark.bmi})`)
+}
