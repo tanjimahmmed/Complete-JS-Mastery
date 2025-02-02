@@ -521,7 +521,6 @@ console.log(tanjim);
 console.log(`${tanjim.firstName} has ${tanjim.friends.length} friends, and his best friend is called ${tanjim.friends[0]}`);
 */
 
-
 ///////////////////// Object methods
 /*
 const tanjims = {
@@ -562,6 +561,7 @@ console.log(tanjims.age);
 console.log(tanjims.getSummary());
 */
 
+/*
 // challenge
 const mark = {
   fullName: "Mark Miller",
@@ -593,4 +593,10 @@ if(mark.bmi > john.bmi) {
   console.log(`${mark.fullName}'s is BMI (${mark.bmi}) is higer than ${john.fullName}'s BMI (${john.bmi})`)
 }else if(john.bmi > mark.bmi) {
   console.log(`${john.fullName}'s is BMI (${john.bmi}) is higer than ${mark.fullName}'s BMI (${mark.bmi})`)
+}
+*/
+
+///////////////////// for loop
+for (let rep = 1; rep <= 10; rep++) {
+  console.log(`Lifting weights repetation ${rep} 🏋️‍♀️`);
 }
