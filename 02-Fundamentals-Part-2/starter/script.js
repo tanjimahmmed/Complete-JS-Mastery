@@ -489,3 +489,32 @@ const tanjim = {
 
 console.log(tanjim);
 */
+
+const tanjim = {
+  firstName: "Tanjim",
+  lastName: "Miller",
+  age: 2047 - 1998,
+  job: "programmer",
+  friends: ["Michael", "Peter", "Steven"],
+};
+console.log(tanjim.firstName);
+console.log(tanjim['lastName']);
+
+const nameKey = "Name";
+console.log(tanjim['first' + nameKey]);
+console.log(tanjim['last' + nameKey]);
+
+const interestedIn = prompt('What do you want to know about Jonas? Choose between firstName, lastName, age, job, and friends');
+
+if(tanjim[interestedIn]){
+  console.log(tanjim[interestedIn])
+}else {
+  console.log('Wrong request! Choose between firstName, lastName, age, job, and friends');
+}
+
+tanjim.location = "Bangladesh";
+tanjim["github"] = "tanjiahmmed";
+console.log(tanjim);
+
+// challenge
+console.log(`${tanjim.firstName} has ${tanjim.friends.length} friends, and his best friend is called ${tanjim.friends[0]}`);
