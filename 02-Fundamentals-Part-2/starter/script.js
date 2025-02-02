@@ -596,7 +596,51 @@ if(mark.bmi > john.bmi) {
 }
 */
 
+/*
 ///////////////////// for loop
 for (let rep = 1; rep <= 10; rep++) {
   console.log(`Lifting weights repetation ${rep} 🏋️‍♀️`);
+}
+*/
+
+///////////////////// loopings array and continue and break
+const tanjims = [
+  "Tanjim",
+  "Milton",
+  2047 - 1998,
+  "programmer",
+  ["Michael", "Peter", "Steven"],
+  true
+];
+
+const types = [];
+
+for (let i = 0; i < tanjims.length; i++){
+  // reading from tanjims array
+  console.log(tanjims[i], typeof tanjims[i]);
+
+  // Filling types array
+  // types[i] = typeof tanjims[i];
+  types.push(typeof tanjims[i]);
+}
+
+console.log(types);
+
+const years = [1998, 2002, 1971, 2022];
+const ages = [];
+
+for(let i = 0; i < years.length; i++){
+  ages.push(2047 - years[i]);
+}
+console.log(ages);
+
+// continue and break
+for (let i = 0; i < tanjims.length; i++){
+  if(typeof tanjims[i] !== "string") continue;
+  console.log(tanjims[i], typeof tanjims[i]);
+}
+// break with num
+for (let i = 0; i < tanjims.length; i++){
+  if(typeof tanjims[i] === "number") break;
+  console.log(tanjims[i], typeof tanjims[i]);
 }
