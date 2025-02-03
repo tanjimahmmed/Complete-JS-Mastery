@@ -669,4 +669,127 @@ for(let exercise = 1; exercise <= 3; exercise++){
     console.log(`Exercise ${exercise}: Lifting weight repetition ${rep}`)
   }
 }
-  */
+*/
+
+///////////////////// while loop
+/*let rep = 1;
+while(rep <= 10){
+  console.log(`Lifting weights repetition ${rep}`);
+  rep++;
+}*/
+/*
+let dice = Math.trunc(Math.random() * 6)  + 1;
+
+while(dice !== 6){
+  console.log(`You rolled a ${dice}`);
+  dice = Math.trunc(Math.random() * 6)  + 1;
+  if(dice === 6){
+    console.log('Loop is about to end...')
+  }
+}
+*/
+
+/*
+const calcTip = function (bill) {
+  return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+}
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+
+
+for(let i = 0; i < bills.length; i++){
+  const tip = calcTip(bills[i]);
+  tips.push(tip);
+  totals.push(tip + bills[i]);
+}
+
+console.log(bills, tips, totals);
+
+
+const calcAverage = function (arr) {
+  let sum = 0;
+  for(let i = 0; i < arr.length; i++){
+    sum += arr[i]
+  }
+  return sum / arr.length;
+}
+
+console.log(calcAverage([2, 3, 7]));
+console.log(calcAverage(totals));
+console.log(calcAverage(tips));
+*/
+
+// additional exercise from chatgpt
+// Calculating Discounts Based on Price Ranges
+const calcDiscount = function(price){
+  return price >= 100 && price <= 500 ? price * 0.1 : price * 0.2;
+}
+
+const prices = [50, 200, 600, 120, 80, 450, 30, 700];
+const discounts = [];
+const finalPrices = [];
+
+for (let i = 0; i < prices.length; i++){
+  const discount = calcDiscount(prices[i]);
+  discounts.push(discount);
+  finalPrices.push(prices[i] - discount);
+}
+
+console.log(prices, discounts, finalPrices);
+
+// Categorizing Students Based on Scores
+const categorizeStudent = function (score) {
+  return score >= 90 ? "A" : score >= 75 ? "B" : score >= 50 ? "C" : "F";
+}
+
+const scores = [92, 85, 76, 44, 99, 58, 72, 33];
+const grades = [];
+
+for(let i = 0; i < scores.length; i++){
+  grades.push(categorizeStudent(scores[i]));
+}
+
+console.log(scores, grades);
+
+// Determining Workout Intensity Based on Steps
+
+const calcIntensity = function(steps){
+  return steps >= 10000 ? "High" : steps >= 5000 ? "Medium" : "Low";
+};
+
+const dailySteps = [3000, 12000, 7500, 8900, 1000, 4500, 6700];
+const intensities = [];
+
+for(let i = 0; i < dailySteps.length; i++){
+  intensities.push(calcIntensity(dailySteps[i]))
+}
+
+console.log(dailySteps, intensities);
+
+// Temperature Converter (Celsius to Fahrenheit)
+const celsiusToFahrenheit = function (celsius) {
+  return (celsius * 9 / 5) + 32;
+};
+
+const celsiusValues = [0, 15, 25, 30, 100, -5, -10];
+const fahrenheitValues = [];
+
+for(let i = 0; i < celsiusValues.length; i++){
+  fahrenheitValues.push(celsiusToFahrenheit(celsiusValues[i]));
+}
+console.log(celsiusValues, fahrenheitValues);
+
+// Checking if Numbers are Even or Odd
+const checkEvenOdd = function (num) {
+  return num % 2 === 0 ? "Even" : "Odd";
+}
+
+const numbers = [12, 45, 68, 79, 33, 22, 90, 101];
+const results = [];
+
+for(let i = 0; i < numbers.length; i++){
+  results.push(checkEvenOdd(numbers[i]));
+}
+
+console.log(numbers, results);
