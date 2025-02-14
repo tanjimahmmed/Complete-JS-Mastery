@@ -149,4 +149,50 @@ function calcAge(birthYear) {
 }
 */
 
+/*
+const jessica = {
+    firstName: "Jessica",
+    lastName: "Williams",
+    age: 27,
+};
 
+function marryPerson(originalPerson, newLastName){
+    originalPerson.lastName = newLastName;
+    return originalPerson
+};
+
+const marriedJessica = marryPerson(jessica, "Davis");
+
+// const marriedJessica = jessica;
+// marriedJessica.firstName = "Davis";
+
+console.log("Before:", jessica);
+console.log("Before:", marriedJessica);
+
+// jessica.age = 26;
+// jessica = {x : 26}
+*/
+
+
+const jessica1 = {
+    firstName: "Jessica",
+    lastName: "Williams",
+    age: 27,
+    family: ["Alice", "Bob"]
+};
+
+// shallow copy
+const jessicaCopy = {...jessica1};
+jessicaCopy.lastName = "Davis1";
+jessicaCopy.family.push("John");
+
+console.log("Before:", jessica1);
+console.log("Before:", jessicaCopy);
+
+// deep copy
+const jessicaClone = structuredClone(jessica1);
+jessicaClone.family.push("Mary");
+jessicaClone.family.push("Nolan");
+
+console.log("Original:", jessica1);
+console.log("Clone:", jessicaClone);
