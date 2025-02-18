@@ -102,6 +102,7 @@ restaurant.orderPizza("mushrooms", "onion", "olives", "spinach") //first index i
 restaurant.orderPizza("mushrooms")
 */
 
+/*
 // Use any data type, return any data type, short-circuiting
 console.log(3 || "Tanjim");
 console.log('' || "Tanjim");
@@ -128,6 +129,18 @@ if(restaurant.orderPizza){
 }
 
 restaurant.orderPizza && restaurant.orderPizza('mushroom', 'spinach');
+*/
+
+// Nullish coalescing operator(??)
+restaurant.numGuests = 0;
+const guests = restaurant.numGuests || 10;
+console.log(guests);
+
+// Nullish: null and undefined (NOT 0 or '')
+const guestCorrect = restaurant.numGuests ?? 10;
+console.log(guestCorrect);
+
+
 
 /*
 restaurant.orderDelivery({
