@@ -57,7 +57,7 @@ const restaurant = {
     console.log(otherIngredients);
   }
 };
-
+/*
 // Spread operator
 
 // spread, because on right side of = 
@@ -100,6 +100,35 @@ add(...x)
 
 restaurant.orderPizza("mushrooms", "onion", "olives", "spinach") //first index is main ingredient and lefts 3 are in one obj
 restaurant.orderPizza("mushrooms")
+*/
+
+// Use any data type, return any data type, short-circuiting
+console.log(3 || "Tanjim");
+console.log('' || "Tanjim");
+console.log(true || 0);
+console.log(undefined || null);
+console.log(undefined || 0 || '' || 'Hello' || 23 || null);
+
+restaurant.numGuests = 23;
+const guest1 = restaurant.numGuests ? restaurant.numGuests : 10;
+console.log(guest1);
+
+const guest2 = restaurant.numGuests || 10;
+console.log(guest2);
+
+console.log('----- AND ----');
+
+console.log(0 && 'Tanjim');
+console.log(7 && 'Tanjim');
+
+console.log('hello' && 23 && null && 'Tanjim');
+
+if(restaurant.orderPizza){
+  restaurant.orderPizza('mushroom', 'spinach')
+}
+
+restaurant.orderPizza && restaurant.orderPizza('mushroom', 'spinach');
+
 /*
 restaurant.orderDelivery({
   time: "22:30",
