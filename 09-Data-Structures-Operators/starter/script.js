@@ -50,9 +50,57 @@ const restaurant = {
   // },
   orderDelivery: function({starterIndex = 1, mainIndex = 0, time = '20:00', address}){
     console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
+  },
+
+  orderPizza: function(mainIngredient, ...otherIngredients){
+    console.log(mainIngredient);
+    console.log(otherIngredients);
   }
 };
 
+// Spread operator
+
+// spread, because on right side of = 
+const arr = [1, 2, ...[3, 4]];
+// console.log(arr);
+
+// spread, because on left side of = 
+const [a, b, ...others] = [1, 2, 3, 4, 5];
+console.log(a, b, others);
+
+const [pizza, , risotto, Focaccia, , ...otherFood] = [ //in destructuring element always spread operator at the last
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu
+]
+
+console.log(pizza, risotto,Focaccia, otherFood);
+
+// objects
+const {sat, ...weekdays} = restaurant.openingHours;
+console.log(weekdays);
+
+// 2) function
+// const add = function(...numbers) {
+//   console.log(numbers)
+// }
+
+const add = function(...number){
+  let sum = 0;
+  for(let i = 0; i < number.length; i++) sum += number[i];
+  console.log(sum);
+  
+}
+
+add(2, 3);
+add(5,3,7,2);
+add(8,2,5,3,2,1,4);
+
+const x = [23, 5, 7];
+add(...x)
+
+restaurant.orderPizza("mushrooms", "onion", "olives", "spinach") //first index is main ingredient and lefts 3 are in one obj
+restaurant.orderPizza("mushrooms")
+/*
 restaurant.orderDelivery({
   time: "22:30",
   address: "Gulshan 2, Dhaka",
@@ -90,6 +138,7 @@ console.log(a, b);
 const {fri: {open: o, close: c}} = openingHours;
 // console.log(open, close);
 console.log(o, c);
+*/
 
 
 /*
