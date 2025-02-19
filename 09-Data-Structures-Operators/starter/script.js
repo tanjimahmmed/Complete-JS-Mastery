@@ -30,6 +30,7 @@ const restaurant = {
   categories: ['Italian', 'Pizzeria', 'Vegetarian', 'Organic'],
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
+  // openingHours,
 
   openingHours: {
     thu: {
@@ -45,9 +46,9 @@ const restaurant = {
       close: 24,
     },
   },
-  // order: function (starterIndex, mainIndex) {
-  //   return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
-  // },
+  order: function (starterIndex, mainIndex) {
+    return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]]
+  },
   orderDelivery: function({starterIndex = 1, mainIndex = 0, time = '20:00', address}){
     console.log(`Order received! ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${address} at ${time}`);
   },
@@ -57,6 +58,45 @@ const restaurant = {
     console.log(otherIngredients);
   }
 };
+
+// const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+// for(const item of menu ) console.log(item);
+
+// for(const item of menu.entries()){
+//   console.log(item);
+// }
+
+// for(const [i, el] of menu.entries()) {
+//   console.log(`${i + 1}: ${el}`);
+// }
+// if(restaurant.openingHours.mon)
+// console.log(restaurant.openingHours.mon.open);
+
+// if(restaurant.openingHours.fri)
+// console.log(restaurant.openingHours.fri.open);
+if(restaurant.openingHours && restaurant.openingHours.mon)
+  console.log(restaurant.openingHours.mon.open);
+
+// with optional chaining
+console.log(restaurant.openingHours.mon?.open);
+console.log(restaurant.openingHours?.mon?.open);
+
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+for(const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? "not open";
+  console.log(`On ${day}, we open at ${open}`);
+}
+
+// Methods
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+console.log(restaurant.orderRisotto?.(0, 1) ?? 'Method does not exist');
+
+const users = [{name: 'Tanjim', email: 'tanjim@gmail.com'}];
+console.log(users[0]?.name ?? 'User array empty')
+
+if(users.length > 0) console.log(users[0].name);
+else console.log('user array empty')
+  
 /*
 // Spread operator
 
@@ -142,6 +182,7 @@ const guestCorrect = restaurant.numGuests ?? 10;
 console.log(guestCorrect);
 */
 
+/*
 const rest1 = {
   name: "Capri",
   // numGuests: 20,
@@ -171,7 +212,7 @@ rest2.owner &&= "<ANONYMOUS>";
 
 console.log(rest1);
 console.log(rest2);
-
+*/
 
 
 
@@ -283,5 +324,75 @@ const [p = 1, q = 1, r = 1] = [8, 9] // 1 will be added as default value
 console.log(p, q, r);
 */
 
+/*
+const game = {
+  team1: 'Bayern Munich',
+  team2: 'Borrussia Dortmund',
+  players: [
+    [
+      'Neuer',
+      'Pavard',
+      'Martinez',
+      'Alaba',
+      'Davies',
+      'Kimmich',
+      'Goretzka',
+      'Coman',
+      'Muller',
+      'Gnarby',
+      'Lewandowski',
+    ],
+    [
+      'Burki',
+      'Schulz',
+      'Hummels',
+      'Akanji',
+      'Hakimi',
+      'Weigl',
+      'Witsel',
+      'Hazard',
+      'Brandt',
+      'Sancho',
+      'Gotze',
+    ],
+  ],
+  score: '4:0',
+  scored: ['Lewandowski', 'Gnarby', 'Lewandowski', 'Hummels'],
+  date: 'Nov 9th, 2037',
+  odds: {
+    team1: 1.33,
+    x: 3.25,
+    team2: 6.5,
+  },
+};
+
+const [players1, players2] = game.players;
+console.log(players1, players2);
 
 
+const [gk, ...fieldPlayers] = players1;
+console.log(gk, fieldPlayers);
+
+const allPlayers = [...players1, ...players2];
+console.log(allPlayers);
+
+const players1Final = [...players1, 'Thiago', 'Coutinho', 'Periscic'];
+console.log(players1Final);
+
+
+const {odds: {team1, x: draw, team2}} = game;
+console.log(team1, draw, team2);
+
+const printGoals = function(...players) {
+  console.log(players);
+  console.log(`${players.length} goals were scored`);
+  
+}
+
+// printGoals('Davies', 'Muller');
+// printGoals(game.scored);
+printGoals(...game.scored);
+
+team1 < team2 && console.log("Team 1 is more likely to win")
+team1 > team2 && console.log("Team 2 is more likely to win")
+*/
