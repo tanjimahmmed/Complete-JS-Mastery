@@ -56,6 +56,25 @@ const restaurant = {
 };
 
 /*
+// ----------------------------------------------------------
+// For of loop
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu]
+for(const item of menu) console.log(item);
+
+// for (const item of menu.entries()){
+//   console.log(item);
+// }
+for (const [i, el] of menu.entries()){
+  console.log(`${i + 1}: ${el}`);
+}
+// console.log([...menu.entries()]);
+*/
+
+
+
+
+// ----------------------------------------------------------
+/*
 const rest1 = {
   name: 'Capri',
   // numGuests: 20
@@ -295,7 +314,7 @@ const [p = 1, q = 1, r = 1] = [8, 9];
 console.log(p,q,r);
 */
 
-
+/*
 const game = {
   team1: 'Bayern Munich',
   team2: 'Borrussia Dortmund',
@@ -370,3 +389,4 @@ printGoals(...game.scored)
 // 7
 team1 < team2 && console.log('Team 1 is more likely to win');
 team1 > team2 && console.log('Team 2 is more likely to win');
+*/
