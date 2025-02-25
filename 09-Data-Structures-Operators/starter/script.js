@@ -60,6 +60,42 @@ const restaurant = {
 };
 
 // ----------------------------------------------------------
+// Set
+
+const ordersSet = new Set([
+  'Pasta',
+  'pizza',
+  'pizza',
+  'Risotto',
+  'Pasta',
+  'pizza',
+])
+console.log(ordersSet);
+
+console.log(new Set('Tanjim'));
+console.log(ordersSet.size);
+console.log(ordersSet.has('pizza'));
+console.log(ordersSet.has('bread'));
+ordersSet.add('Garlic Bread');
+ordersSet.add('Garlic Bread');
+ordersSet.delete('Risotto');
+console.log(ordersSet);
+// ordersSet.clear();
+// ** in set there are no indexes
+console.log(ordersSet[2]);
+
+// ** sets are iterable
+for(const order of ordersSet) console.log(order);
+
+// example
+const staff = ['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter'];
+const staffUnique = [...new Set(staff)]; // ** set to array
+console.log(staffUnique);
+
+console.log(new Set(['Waiter', 'Chef', 'Waiter', 'Manager', 'Chef', 'Waiter']).size);
+
+/*
+// ----------------------------------------------------------
 // looping objects
 // property names
 const properties = Object.keys(openingHours);
@@ -84,6 +120,8 @@ for(const [day, {open, close}] of entries) {
   console.log(`On ${day} we open at ${open} and close at ${close}`);
   
 }
+*/
+
 
 // for(const day of properties) {
 //   console.log(day);
@@ -459,7 +497,7 @@ team1 < team2 && console.log('Team 1 is more likely to win');
 team1 > team2 && console.log('Team 2 is more likely to win');
 */
 
-
+/*
 // ----------------------------------------------------------
 // challenge 2
 const game = {
@@ -519,3 +557,4 @@ for(const [team, odd] of Object.entries(game.odds)) {
   const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`
   console.log(`Odd of ${teamStr} ${odd}`);
 }
+*/
