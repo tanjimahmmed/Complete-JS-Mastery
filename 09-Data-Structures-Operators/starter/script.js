@@ -60,6 +60,114 @@ const restaurant = {
 };
 
 // ----------------------------------------------------------
+const airline = 'TAP Air Portugal';
+
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+// fix capitalization in name
+const passenger = 'tAnJim'; 
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect = passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+// comparing email
+const email = 'hello@tanjim.io';
+const loginEmail = ' Hello@Tanjim.Io \n';
+
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim();
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+console.log(email === normalizedEmail);
+
+// replacing
+const priceGB = '288,97€';
+const priceUS = priceGB.replace('€', '$').replace(',', '.');
+console.log(priceUS);
+
+
+// multiple string or data change
+const announcement = 'All passengers come to boarding door 23. Boarding door 23!';
+console.log(announcement.replace('door', 'gate'));
+console.log(announcement.replaceAll('door', 'gate'));
+console.log(announcement.replace(/door/g, 'gate')); // this will also globally change all the door word to gate
+
+
+// Booleans
+const plane = 'Airbus A320neo';
+console.log(plane.includes('A320'));
+console.log(plane.includes('Boeing'));
+console.log(plane.startsWith('Air'));
+
+if(plane.startsWith('Airbus') && plane.endsWith('neo')) {
+  console.log('Part of the NEW AIRbus family');
+  
+}
+
+// practice exercise
+const checkBaggage = function(items){
+  const baggage = items.toLowerCase();
+  if(baggage.includes('knife') || baggage.includes('gun')){
+    console.log('You are not allowed on board');
+  }else {
+    console.log('Welcome aboard');
+  }
+}
+checkBaggage('I have a laptop, some Food and a pocket Knife');
+checkBaggage('Socks and Camera');
+checkBaggage('Got some snacks and gun for protection');
+
+
+// ----------------------------------------------------------
+/*
+const airline = 'TAP Air Portugal';
+const plane = 'A320'
+
+console.log(plane[0]);
+console.log(plane[1]);
+console.log(plane[2]);
+console.log('B737'[1]);
+
+console.log(airline.length);
+console.log('B737'.length);
+
+console.log(airline.indexOf('r'));
+console.log(airline.lastIndexOf('r'));
+console.log(airline.indexOf('Portugal'));
+
+
+console.log(airline.slice(4));
+console.log(airline.slice(4, 7));
+
+console.log(airline.slice(0, airline.indexOf(' ')));
+console.log(airline.slice(airline.lastIndexOf(' ') + 1));
+
+console.log(airline.slice(-2));
+console.log(airline.slice(1, -1));
+
+const checkMiddleSeat = function (seat) {
+  // B and E are middle seat
+  const s = seat.slice(-1);
+  if(s === 'B' || s === 'E') 
+    console.log(`You got the middle seat`);
+  else console.log('You got lucky');
+    
+}
+
+checkMiddleSeat('11B')
+checkMiddleSeat('23C')
+checkMiddleSeat('3E')
+
+console.log(new String('Tanjim'));
+console.log(typeof new String('Tanjim'));
+console.log(typeof new String('Tanjim').slice(1));
+*/
+
+
+
+// ----------------------------------------------------------
 /*
 // map iteration
 const question = new Map([
@@ -697,7 +805,7 @@ Let's continue with our football betting app! This time, we have a map with a lo
 
 GOOD LUCK 😀
 */
-
+/*
 const gameEvents = new Map([
   [17, '⚽️ GOAL'],
   [36, '🔁 Substitution'],
@@ -711,18 +819,23 @@ const gameEvents = new Map([
   [80, '⚽️ GOAL'],
   [92, '🔶 Yellow card'],
 ]);
+
 const events = [...new Set(gameEvents.values())];
 console.log(events);
 gameEvents.delete(64);
+
 console.log(`An event happened, on average, every ${90 / gameEvents.size} minutes`);
+
 const time = [...gameEvents.keys()].pop();
 console.log(time);
 console.log(`An event happened, on average, every ${time / gameEvents.size} minutes`);
+
 for(const [min, event] of gameEvents){
   const half = min <= 45 ? 'First' : 'Second';
-  console.log(`[${half} Half] ${min} : ${event}`);
+  console.log(`[${half} Half] ${min}: ${event}`);
   
 }
+*/
 
 
 
