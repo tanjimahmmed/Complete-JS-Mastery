@@ -69,7 +69,7 @@ const displayMovements = function(movements){
       <div class="movements__row">
         <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
         
-        <div class="movements__value">${mov}</div>
+        <div class="movements__value">${mov}€</div>
       </div>
     `;
     containerMovements.insertAdjacentHTML('afterbegin', html);
@@ -79,10 +79,25 @@ displayMovements(account1.movements);
 
 const calcDisplayBalance = function(movements){
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance} €`;
+  
 }
 
 calcDisplayBalance(account1.movements)
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+  .filter(mov => mov > 0)
+  .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes}€`;
+  const out = movements.filter(mov => mov < 0).reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)}€`;
+
+  const interest = movements.filter(mov => mov > 0).map(deposit => deposit * 1.2/100).filter((int, i, arr) => {console.log(arr); return int >= 1}).reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${interest}€`;
+}
+
+calcDisplaySummary(account1.movements);
 
 const createUsernames = function (accs){
   accs.forEach(function(acc) {
@@ -257,12 +272,12 @@ const euroToUSD = 1.1;
 
 const movementsUSD = movements.map(mov => mov * euroToUSD);
 
-console.log(movements);
-console.log(movementsUSD);
+// console.log(movements);
+// console.log(movementsUSD);
 
 const movementsUSDfor = [];
 for(const mov of movements) movementsUSDfor.push(mov * euroToUSD);
-console.log(movementsUSDfor);
+// console.log(movementsUSDfor);
 
 // const movementDescriptions = movements.map((mov, i, arr) => {
 //   if(mov > 0){
@@ -277,20 +292,20 @@ const movementDescriptions = movements.map((mov, i, arr) =>
   `Movement ${i + 1}: You ${mov > 0 ? 'deposited' : 'withdraw'} ${Math.abs(mov)}`
 )
 
-console.log(movementDescriptions);
+// console.log(movementDescriptions);
 
 const deposits = movements.filter(function(mov){
   return mov > 0;
 });
-console.log(movements)
-console.log(deposits)
+// console.log(movements)
+// console.log(deposits)
 const depositsFor = [];
 for(const mov of movements) if(mov > 0) depositsFor.push(mov)
 
 const withdrawals = movements.filter(function(mov){
   return mov < 0;
 })
-console.log(withdrawals);
+// console.log(withdrawals);
 
 // const balance = movements.reduce(function(acc, cur, i, arr){
 //   console.log(`Iteration ${i}: ${acc}`);
@@ -300,18 +315,18 @@ console.log(withdrawals);
 
 const balance = movements.reduce((acc, cur) => acc + cur, 0);
 
-console.log(balance);
+// console.log(balance);
 
 let balance2 = 0;
 for(const mov of movements) balance2 += mov;
-console.log(balance2);
+// console.log(balance2);
 
 const max = movements.reduce((acc, mov) => {
   if(acc > mov) return acc;
   else return mov;
 }, movements[0]);
 
-console.log(max);
+// console.log(max);
 
 
 /* 
@@ -329,7 +344,7 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 
 GOOD LUCK 😀
 */
-
+/*
 const calcAverageHumanAge = (ages) => {
   const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
   const adults = humanAges.filter(age => age >= 18)
@@ -342,4 +357,53 @@ const calcAverageHumanAge = (ages) => {
 const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3])
 const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4])
 console.log(avg1, avg2)
+*/
 
+// pipeline
+const euroToUsd = 1.1;
+// console.log(movements);
+
+// const totalDepositsUSD = movements
+// .filter(mov => mov > 0)
+// .map(mov => mov * euroToUSD)
+// .reduce((acc, mov) => acc + mov, 0)
+
+const totalDepositsUSD = movements
+.filter(mov => mov > 0)
+.map((mov, i, arr) => {
+  // console.log(arr)
+  return mov * euroToUSD;
+}).reduce((acc, mov) => acc + mov, 0)
+
+// console.log(totalDepositsUSD)
+
+///////////////////////////////////////
+// Coding Challenge #3
+
+/* 
+Rewrite the 'calcAverageHumanAge' function from the previous challenge, but this time as an arrow function, and using chaining!
+
+TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
+TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
+
+GOOD LUCK 😀
+*/
+
+// const calcAverageHumanAge = ages =>
+//   ages
+//     .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+//     .filter(age => age >= 18)
+//     .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+// // adults.length
+
+// const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+// const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+// console.log(avg1, avg2);
+
+const firstWithdrawal = movements.find(mov => mov < 0);
+console.log(movements);
+console.log(firstWithdrawal);
+
+console.log(accounts);
+const account = accounts.find(acc => acc.owner === 'Steven Thomas Williams');
+console.log(account);
