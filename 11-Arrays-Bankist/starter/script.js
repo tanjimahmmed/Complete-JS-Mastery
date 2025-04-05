@@ -75,29 +75,35 @@ const displayMovements = function(movements){
     containerMovements.insertAdjacentHTML('afterbegin', html);
   })
 }
-displayMovements(account1.movements);
 
-const calcDisplayBalance = function(movements){
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance} €`;
+const calcDisplayBalance = function(acc){
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${acc.balance}€`;
   
 }
 
-calcDisplayBalance(account1.movements)
-
-const calcDisplaySummary = function (movements) {
-  const incomes = movements
-  .filter(mov => mov > 0)
-  .reduce((acc, mov) => acc + mov, 0);
+const calcDisplaySummary = function (acc) {
+  const incomes = acc.movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
   labelSumIn.textContent = `${incomes}€`;
-  const out = movements.filter(mov => mov < 0).reduce((acc, mov) => acc + mov, 0);
+
+  const out = acc.movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = `${Math.abs(out)}€`;
 
-  const interest = movements.filter(mov => mov > 0).map(deposit => deposit * 1.2/100).filter((int, i, arr) => {console.log(arr); return int >= 1}).reduce((acc, int) => acc + int, 0);
+  const interest = acc.movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * acc.interestRate) / 100)
+    .filter((int, i, arr) => {
+      // console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
   labelSumInterest.textContent = `${interest}€`;
-}
+};
 
-calcDisplaySummary(account1.movements);
 
 const createUsernames = function (accs){
   accs.forEach(function(acc) {
@@ -110,6 +116,67 @@ const createUsernames = function (accs){
 }
 createUsernames(accounts)
 
+const updateUI = function(acc){
+  displayMovements(acc.movements);
+
+  calcDisplayBalance(currentAccount);
+
+  calcDisplaySummary(currentAccount)
+}
+
+let currentAccount;
+
+btnLogin.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
+  console.log(currentAccount)
+
+  if(currentAccount?.pin === Number(inputLoginPin.value)) {
+    labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]}`;
+    containerApp.style.opacity = 100
+
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
+
+    // Update UI
+    updateUI(currentAccount);
+  }
+});
+
+btnTransfer.addEventListener('click', function(e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(acc => acc.username === inputTransferTo.value);
+  inputTransferAmount.value = inputTransferTo.value = '';
+  if(
+    amount > 0 && 
+    receiverAcc &&
+    currentAccount.balance >= amount && 
+    receiverAcc?.username !== currentAccount.username){
+    currentAccount.movements.push(-amount);
+    receiverAcc.movements.push(amount)
+
+    // Update UI
+    updateUI(currentAccount);
+  }
+})
+
+btnClose.addEventListener('click', function(e) {
+  e.preventDefault();
+  
+
+  if(inputCloseUsername.value === currentAccount.username && Number(inputClosePin.value) === currentAccount.pin){
+    const index = accounts.findIndex(acc => acc.username === currentAccount.username);
+    console.log(index)
+    // Delete acc
+    accounts.splice(index, 1);
+
+    // Hide UI
+    containerApp.style.opacity = 0;
+  }
+  inputCloseUsername.value = inputClosePin.value = '';
+})
 
 
 
@@ -407,3 +474,20 @@ console.log(firstWithdrawal);
 console.log(accounts);
 const account = accounts.find(acc => acc.owner === 'Steven Thomas Williams');
 console.log(account);
+
+
+// findlast and findLastIndex Methods
+console.log(movements);
+
+const lastWithdrawal = movements.findLast(mov => mov < 0);
+console.log(lastWithdrawal);
+
+// your latest large movement was X movements ago
+const latestLargeMovementIndex = movements.findLastIndex(
+  mov => Math.abs(mov > 1000)
+)
+
+console.log(latestLargeMovementIndex);
+
+console.log(`Your latest large movement was ${movements.length - latestLargeMovementIndex} movements ago`);
+
