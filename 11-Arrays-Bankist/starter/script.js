@@ -160,7 +160,21 @@ btnTransfer.addEventListener('click', function(e) {
     // Update UI
     updateUI(currentAccount);
   }
-})
+});
+
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  const amount = Number(inputLoanAmount.value);
+
+  if(amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)){
+    // add movement
+    currentAccount.movements.push(amount);
+
+    // update ui
+    updateUI(currentAccount)
+  }
+});
 
 btnClose.addEventListener('click', function(e) {
   e.preventDefault();
@@ -475,7 +489,7 @@ console.log(accounts);
 const account = accounts.find(acc => acc.owner === 'Steven Thomas Williams');
 console.log(account);
 
-
+/*
 // findlast and findLastIndex Methods
 console.log(movements);
 
@@ -491,3 +505,23 @@ console.log(latestLargeMovementIndex);
 
 console.log(`Your latest large movement was ${movements.length - latestLargeMovementIndex} movements ago`);
 
+*/
+
+console.log(movements);
+console.log(movements.includes(-130))
+
+// Condition
+console.log(movements.some(mov => mov === -130))
+
+const anyDeposits = movements.some(mov => mov > 1500);
+console.log(anyDeposits);
+
+// Every
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+// separate callback
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
