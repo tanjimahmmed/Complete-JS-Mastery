@@ -740,3 +740,16 @@ labelBalance.addEventListener('click', function () {
   const movementUI2 = [...document.querySelectorAll('.movements__value')]
 })
 
+console.log(movements);
+// const reversedMov = movements.slice().reverse();
+// improvement version
+const reversedMov = movements.toReversed();
+console.log(reversedMov);
+
+// movements[1] = 2000;
+const newMovements = movements.with(1, 2000)
+
+console.log(newMovements);
+
+console.log(movements);
+
