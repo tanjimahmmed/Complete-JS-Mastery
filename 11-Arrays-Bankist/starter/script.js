@@ -137,7 +137,7 @@ btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
 
   currentAccount = accounts.find(acc => acc.username === inputLoginUsername.value);
-  console.log(currentAccount)
+  // console.log(currentAccount)
 
   if(currentAccount?.pin === Number(inputLoginPin.value)) {
     labelWelcome.textContent = `Welcome back, ${currentAccount.owner.split(' ')[0]}`;
@@ -189,7 +189,7 @@ btnClose.addEventListener('click', function(e) {
 
   if(inputCloseUsername.value === currentAccount.username && Number(inputClosePin.value) === currentAccount.pin){
     const index = accounts.findIndex(acc => acc.username === currentAccount.username);
-    console.log(index)
+    // console.log(index)
     // Delete acc
     accounts.splice(index, 1);
 
@@ -494,12 +494,12 @@ GOOD LUCK 😀
 // console.log(avg1, avg2);
 
 const firstWithdrawal = movements.find(mov => mov < 0);
-console.log(movements);
-console.log(firstWithdrawal);
+// console.log(movements);
+// console.log(firstWithdrawal);
 
-console.log(accounts);
+// console.log(accounts);
 const account = accounts.find(acc => acc.owner === 'Steven Thomas Williams');
-console.log(account);
+// console.log(account);
 
 /*
 // findlast and findLastIndex Methods
@@ -519,31 +519,31 @@ console.log(`Your latest large movement was ${movements.length - latestLargeMove
 
 */
 
-console.log(movements);
-console.log(movements.includes(-130))
+// console.log(movements);
+// console.log(movements.includes(-130))
 
 // Condition
-console.log(movements.some(mov => mov === -130))
+// console.log(movements.some(mov => mov === -130))
 
 const anyDeposits = movements.some(mov => mov > 1500);
-console.log(anyDeposits);
+// console.log(anyDeposits);
 
 // Every
-console.log(movements.every(mov => mov > 0));
-console.log(account4.movements.every(mov => mov > 0));
+// console.log(movements.every(mov => mov > 0));
+// console.log(account4.movements.every(mov => mov > 0));
 
 // separate callback
 const deposit = mov => mov > 0;
-console.log(movements.some(deposit));
-console.log(movements.every(deposit));
-console.log(movements.filter(deposit));
+// console.log(movements.some(deposit));
+// console.log(movements.every(deposit));
+// console.log(movements.filter(deposit));
 
 // flat and flat Map
 const arr = [[1,2,3], [4,5,6], 7, 8];
-console.log(arr.flat());
+// console.log(arr.flat());
 
 const arrDeep = [[[1,2],3], [4,[5,6]], 7, 8];
-console.log(arrDeep.flat(2))
+// console.log(arrDeep.flat(2))
 
 // const accountMovements = accounts.map(acc => acc.movements);
 // console.log(accountMovements);
@@ -554,11 +554,63 @@ console.log(arrDeep.flat(2))
 // const overalBalance = allMovements.reduce((acc, mov) => acc + mov, 0);
 // flat
 const overalBalance = accounts.map(acc => acc.movements).flat().reduce((acc, mov) => acc + mov, 0);
-console.log(overalBalance);
+// console.log(overalBalance);
 
 // flatMap
 const overalBalance2 = accounts.flatMap(acc => acc.movements).reduce((acc, mov) => acc + mov, 0);
-console.log(overalBalance2);
+// console.log(overalBalance2);
+
+////////////////////////////////////////
+// Array method practice
+// 1
+const bankDepositSum = accounts
+.flatMap(acc => acc.movements)
+.filter(mov => mov > 0)
+.reduce((sum, cur) => sum + cur, 0);
+
+console.log(bankDepositSum);
+
+// 2
+const numDesposits1000 = accounts
+.flatMap(acc => acc.movements)
+// .reduce((count, cur) => (cur >= 1000 ? count + 1 : count), 0);
+.reduce((count, cur) => (cur >= 1000 ? ++count : count), 0);
+
+console.log(numDesposits1000);
+
+// prefixed ++ operator
+let a = 10;
+console.log(++a);
+console.log(a);
+
+// 3
+const {deposits1, withdrawals2} = accounts
+.flatMap(acc => acc.movements)
+.reduce((sums, cur) => {
+  // cur > 0 ? (sums.deposits1 += cur) : (sums.withdrawals2 += cur);
+  sums[cur > 0 ? 'deposits1' : 'withdrawals2'] += cur;
+  return sums;
+}, {deposits1: 0, withdrawals2: 0})
+
+console.log(deposits1, withdrawals2);
+
+// 4
+const convertTitleCase = function (title) {
+  const capitalize = str => str[0].toUpperCase() + str.slice(1);
+  const exceptions = ['a', 'an', 'and', 'the', 'but', 'or', 'on', 'in', 'with'];
+
+  const titleCase = title
+  .toLowerCase()
+  .split(' ')
+  .map(word => (exceptions.includes(word) ? word : capitalize(word)))
+  .join(' ');
+
+  return capitalize(titleCase);
+}
+
+console.log(convertTitleCase('this is a nice title'));
+console.log(convertTitleCase('this is a LONG title but not too long'));
+console.log(convertTitleCase('and here is another title with an EXAMPLE'));
 
 
 ///////////////////////////////////////
@@ -686,6 +738,7 @@ movements.sort((a, b) => b - a);
 console.log(movements);
 */
 
+/*
 // Array grouping
 console.log(movements);
 
@@ -753,3 +806,4 @@ console.log(newMovements);
 
 console.log(movements);
 
+*/
