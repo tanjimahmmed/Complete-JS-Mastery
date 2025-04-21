@@ -7,6 +7,10 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const btnCloseModal = document.querySelector('.btn--close-modal');
 const btnsOpenModal = document.querySelectorAll('.btn--show-modal');
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+const header = document.querySelector('.header');
+const allSections = document.querySelectorAll('.section');
 
 const openModal = function () {
   modal.classList.remove('hidden');
@@ -31,19 +35,9 @@ document.addEventListener('keydown', function (e) {
 });
 
 
-console.log(document.documentElement);
-console.log(document.head);
-console.log(document.body);
-
-const header = document.querySelector('.header');
-const allSections = document.querySelectorAll('.section');
-console.log(allSections);
 
 document.getElementById('section--1');
 const allButtons = document.getElementsByTagName('button');
-console.log(allButtons);
-
-console.log(document.getElementsByClassName('btn'));
 
 // creating and inserting elements
 const message = document.createElement('div');
@@ -62,13 +56,7 @@ document.querySelector('.btn--close-cookie').addEventListener('click', function(
   message.remove();
 });
 
-// styles
-// message.style.height = Number.parseFloat(getComputedStyle(message).height) + 30 + 'px';
 
-// document.documentElement.style.setProperty('--color-primary', 'orangered');
-
-const btnScrollTo = document.querySelector('.btn--scroll-to');
-const section1 = document.querySelector('#section--1');
 
 btnScrollTo.addEventListener('click', function (e) {
   const s1coords = section1.getBoundingClientRect();
@@ -83,4 +71,57 @@ btnScrollTo.addEventListener('click', function (e) {
 
   section1.scrollIntoView({behavior: "smooth"})
 
+});
+
+// page navigation
+
+// document.querySelectorAll('.nav__link').forEach(function(el) {
+//   el.addEventListener('click', function(e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     console.log(id);
+//     document.querySelector(id).scrollIntoView({behavior: "smooth"})
+//   })
+// })
+
+document.querySelector('.nav__links').addEventListener('click', function(e) {
+  e.preventDefault();
+
+  if(e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    document.querySelector(id).scrollIntoView({behavior: "smooth"})
+  }
 })
+
+
+
+// const h1 = document.querySelector('h1');
+
+// const alertH1 = function (e) {
+//   alert('Window alert')
+// }
+
+// h1.addEventListener('mouseenter', alertH1)
+
+// setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
+
+// h1.addEventListener('mouseenter', function(e) {
+//   alert('alert')
+// });
+
+// h1.onmouseenter = function (e) {
+//   alert('onmouse');
+// }
+
+// const randomInt = (min, max) => Math.floor(Math.random() * (max-min + 1) + min);
+// const randomColor = () => `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`;
+
+// document.querySelector('.nav__link').addEventListener('click', function(e) {
+//   this.style.backgroundColor = randomColor();
+//   console.log('Link', e.target, e.currentTarget);
+// })
+
+// document.querySelector('.nav__links').addEventListener('click', function(e) {
+//   this.style.backgroundColor = randomColor();
+//   console.log('CONTAINER', e.target, e.currentTarget);
+// })
